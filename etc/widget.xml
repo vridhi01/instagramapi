@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="Instagram_Api" class="Instagram\Api\Block\Widget\InstagramCurl" placeholder_image="Magento_CatalogWidget::images/products_list.png" ttl="86400">
+        <label translate="true">Instagram Api</label>
+        <description translate="true">Display photos</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="true" visible="true">
+                <label translate="true">Title</label>
+                <value>photos from instagram</value>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

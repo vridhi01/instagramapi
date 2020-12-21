@@ -1,0 +1,19 @@
+<?php
+
+/** @var \Instagram\Api\Block\Widget\InstagramCurl  $block */
+?>
+<?php $curldata = $block->getCurlData(); 
+
+$result = json_decode($curldata, true);
+
+
+foreach($result["data"] as $post)
+{ 
+  $media_url = isset($post["media_url"]) ? $post["media_url"] : "";
+  echo "<img src='{$media_url}' class='instagramapimg' />";
+    
+}
+
+
+
+?>
