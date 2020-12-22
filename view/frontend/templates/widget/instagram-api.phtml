@@ -10,10 +10,17 @@ $result = json_decode($curldata, true);
 foreach($result["data"] as $post)
 { 
   $media_url = isset($post["media_url"]) ? $post["media_url"] : "";
-  echo "<img src='{$media_url}' class='instagramapimg' />";
+  $permalink = isset($post["permalink"]) ? $post["permalink"] : "";
+  echo "<a  data-fancybox='images' data-type='iframe' href='{$permalink}'><img src='{$media_url}' class='instagramapimg'/></a>";
     
 }
-
-
-
 ?>
+<script type="text/javascript">
+    require([
+            'jquery',
+            'fancybox'
+        ],
+        function($) {
+       
+        });
+</script>
