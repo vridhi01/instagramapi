@@ -1,3 +1,5 @@
+define(['jquery','domReady!'], function($) {
+
 // ==================================================
 // fancyBox v3.5.7
 //
@@ -5630,3 +5632,6 @@
     }
   });
 })(document, jQuery);
+
+  }(jQuery)
+);
