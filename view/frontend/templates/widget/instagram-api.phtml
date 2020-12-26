@@ -3,9 +3,7 @@
 /** @var \Instagram\Api\Block\Widget\InstagramCurl  $block */
 ?>
 <?php $curldata = $block->getCurlData(); 
-
 $result = json_decode($curldata, true);
-
 echo "<div id='fancybox_gallary'>";
 	foreach($result["data"] as $post )
 	{ 
@@ -40,6 +38,3 @@ echo "</div>"
 				});	
 				 });
 </script>
-
-
-
