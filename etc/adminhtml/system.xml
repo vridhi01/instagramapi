@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="instagramapi" translate="label" sortOrder="250">
+            <label>Instagram Api</label>
+        </tab>
+    <section id="instagramapi_news" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>instagramapi-separator</class>
+            <label>Instagram-api Configuration</label>
+            <tab>instagramapi</tab>
+            <resource>Instagram_Api::test_config</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="storefront" translate="label" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Storefront</label>
+                <field id="instagramapi_link" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                   <label>User Token</label>
+                  <comment><![CDATA[Refer to this <a href="https://developers.facebook.com/docs/instagram-basic-display-api/overview#instagram-user-access-tokens" target="_blank">link</a> to get the user token]]></comment>
+                </field>
+             </group>
+    </section>
+    </system>
+</config>

@@ -1,0 +1,41 @@
+<?php
+
+/** @var \Instagram\Api\Block\Widget\InstagramCurl  $block */
+?>
+<?php $curldata = $block->getCurlData(); 
+$result = json_decode($curldata, true);
+echo "<div class='imgdiv'>";
+	foreach($result["data"] as $post )
+	{ 
+	  $media_url = isset($post["media_url"]) ? $post["media_url"] : "";
+	  $permalink = isset($post["permalink"]) ? $post["permalink"] : "";
+	  $id =     isset($post["id"]) ? $post["id"] : "";
+	  
+	  echo "<a href='{$media_url}' data-fancybox='images'>
+      		<img src='{$media_url}' alt='Image' class='imgstyle' /> <input type='hidden' value='{$permalink}'></a>";
+	 
+	}
+	echo "</div>";
+?>
+<script type="text/javascript">
+    require([
+            'jquery',
+            'fancybox',
+             'domReady!',
+        ],
+    function($) {
+		 $( '[data-fancybox="images"]' ).fancybox({
+		    caption : function( instance, item ) {
+		       var permalink = $(this).find('input[type=hidden]').attr('value');
+		        var caption = $(this).data('caption') || '';
+		        if ( item.type === 'image' ) {
+		            caption = (caption.length ? caption + '<br />' : '') + '<a target="_blank" href="' + permalink + '"  class="viewurl">View Url</a>' ;
+		        }
+
+		        return caption;
+		    }
+	});
+
+	
+	});
+</script>
