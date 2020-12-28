@@ -4,21 +4,18 @@
 ?>
 <?php $curldata = $block->getCurlData(); 
 $result = json_decode($curldata, true);
-echo "<div id='fancybox_gallary'>";
+echo "<div class='imgdiv'>";
 	foreach($result["data"] as $post )
 	{ 
 	  $media_url = isset($post["media_url"]) ? $post["media_url"] : "";
 	  $permalink = isset($post["permalink"]) ? $post["permalink"] : "";
 	  $id =     isset($post["id"]) ? $post["id"] : "";
-	  echo "<a id='{$id}' data-fancybox='images' data-type='iframe' href='{$permalink}' class='fancyboximg' data-width='320' 
-	  data-height='400' data-src='$media_url' ><img src='{$media_url}' class='instagramapimg'/></a>";
-
-	  echo "<div id='{$id}' class='video-link' style='display:none'>
-	  <a  class='link-id-videochat' href='{$permalink}' target='_blank'>View Url</a></div>";
 	  
+	  echo "<a href='{$media_url}' data-fancybox='images'>
+      		<img src='{$media_url}' alt='Image' class='imgstyle' /> <input type='hidden' value='{$permalink}'></a>";
+	 
 	}
-echo "</div>"
-
+	echo "</div>";
 ?>
 <script type="text/javascript">
     require([
@@ -26,15 +23,19 @@ echo "</div>"
             'fancybox',
              'domReady!',
         ],
-        function($) {
-			$('[data-fancybox="images"]').fancybox({
-				afterLoad : function(instance, current) {
-		  			console.log(instance, current, 'kkkkkkkk');
-                        let instanceId = instance.$trigger.attr('id');
-						console.log($('#'+instanceId + '.video-link'), 'instanceId')
-						current.$content.append( $('#'+instanceId + '.video-link').clone(true).show());
-						console.info(current.$content);
-					}
-				});	
-				 });
+    function($) {
+		 $( '[data-fancybox="images"]' ).fancybox({
+		    caption : function( instance, item ) {
+		       var permalink = $(this).find('input[type=hidden]').attr('value');
+		        var caption = $(this).data('caption') || '';
+		        if ( item.type === 'image' ) {
+		            caption = (caption.length ? caption + '<br />' : '') + '<a target="_blank" href="' + permalink + '"  class="viewurl">View Url</a>' ;
+		        }
+
+		        return caption;
+		    }
+	});
+
+	
+	});
 </script>
